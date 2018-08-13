@@ -46,5 +46,38 @@ describe('getAvailabilities', () => {
         String(new Date('2014-08-16')),
       );
     });
+
+    it('should fetch repeating availabilities correctly', async () => {
+      const availabilities = await getAvailabilities(new Date('2014-08-16'));
+      expect(availabilities.length).toBe(7);
+
+      expect(String(availabilities[0].date)).toBe(
+        String(new Date('2014-08-16')),
+      );
+      expect(availabilities[0].slots).toEqual([]);
+
+      expect(String(availabilities[1].date)).toBe(
+        String(new Date('2014-08-17')),
+      );
+      expect(availabilities[1].slots).toEqual([]);
+
+      expect(String(availabilities[2].date)).toBe(
+        String(new Date('2014-08-18')),
+      );
+      expect(availabilities[2].slots).toEqual([
+        '9:30',
+        '10:00',
+        '10:30',
+        '11:00',
+        '11:30',
+        '12:00',
+      ]);
+
+      expect(availabilities[3].slots).toEqual([]);
+
+      expect(String(availabilities[6].date)).toBe(
+        String(new Date('2014-08-22')),
+      );
+    });
   });
 });
