@@ -1,5 +1,5 @@
-import moment from 'moment'
-import knex from 'knexClient'
+import moment from 'moment';
+import knex from 'knexClient';
 
 export default async function getAvailabilities(start_date_string) {
   const date_format = 'YYYY-MM-DD';
